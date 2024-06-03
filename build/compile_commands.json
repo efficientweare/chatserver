@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o -c /home/shicg/chatroom/chatserver/src/server/chatserver.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/chatserver.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o -c /home/shicg/chatroom/chatserver/src/server/chatservice.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/chatservice.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/main.cpp.o -c /home/shicg/chatroom/chatserver/src/server/main.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/main.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/mysqldb/mysqldb.cpp.o -c /home/shicg/chatroom/chatserver/src/server/mysqldb/mysqldb.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/mysqldb/mysqldb.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/model/friendmoel.cpp.o -c /home/shicg/chatroom/chatserver/src/server/model/friendmoel.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/model/friendmoel.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/model/groupmodel.cpp.o -c /home/shicg/chatroom/chatserver/src/server/model/groupmodel.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/model/groupmodel.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/model/offlinemessagemodel.cpp.o -c /home/shicg/chatroom/chatserver/src/server/model/offlinemessagemodel.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/model/offlinemessagemodel.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/model/usermodel.cpp.o -c /home/shicg/chatroom/chatserver/src/server/model/usermodel.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/model/usermodel.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/server/CMakeFiles/ChatServer.dir/redis/redis.cpp.o -c /home/shicg/chatroom/chatserver/src/server/redis/redis.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/server/redis/redis.cpp"
+},
+{
+  "directory": "/home/shicg/chatroom/chatserver/build",
+  "command": "/usr/bin/aarch64-linux-gnu-g++ -I/home/shicg/chatroom/chatserver/include -I/home/shicg/chatroom/chatserver/include/server -I/home/shicg/chatroom/chatserver/include/server/model -I/home/shicg/chatroom/chatserver/include/server/mysqldb -I/home/shicg/chatroom/chatserver/include/server/redis -I/home/shicg/chatroom/chatserver/thridparty -g -g -o src/client/CMakeFiles/ChatClient.dir/main.cpp.o -c /home/shicg/chatroom/chatserver/src/client/main.cpp",
+  "file": "/home/shicg/chatroom/chatserver/src/client/main.cpp"
+}
+]
