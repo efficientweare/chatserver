@@ -1,0 +1,15 @@
+/home/shicg/tinyqq/FriendService/build/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/FriendService/build/CMakeFiles/edit_cache.dir
+/home/shicg/tinyqq/FriendService/build/src/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/FriendService/build/src/CMakeFiles/FriendService.dir
+/home/shicg/tinyqq/FriendService/build/src/CMakeFiles/edit_cache.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/CMakeFiles/edit_cache.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/FriendServer/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/FriendServer/CMakeFiles/edit_cache.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/FriendServer/src/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/FriendServer/src/CMakeFiles/FriendServer.dir
+/home/shicg/tinyqq/FriendService/build/auxiliary_process/FriendServer/src/CMakeFiles/edit_cache.dir
+/home/shicg/tinyqq/FriendService/build/example/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/FriendService/build/example/CMakeFiles/callee.dir
+/home/shicg/tinyqq/FriendService/build/example/CMakeFiles/edit_cache.dir

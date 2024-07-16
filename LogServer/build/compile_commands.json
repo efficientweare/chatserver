@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/shicg/tinyqq/LogServer/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/LogServer/include -I/home/shicg/tinyqq/LogServer/auxiliary_process/download/include  -g -g   -o CMakeFiles/LogServer.dir/LogServer.cpp.o -c /home/shicg/tinyqq/LogServer/src/LogServer.cpp",
+  "file": "/home/shicg/tinyqq/LogServer/src/LogServer.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/LogServer/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/LogServer/include -I/home/shicg/tinyqq/LogServer/auxiliary_process/download/include  -g -g   -o CMakeFiles/LogServer.dir/LogServer.pb.cc.o -c /home/shicg/tinyqq/LogServer/src/LogServer.pb.cc",
+  "file": "/home/shicg/tinyqq/LogServer/src/LogServer.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/LogServer/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/LogServer/include -I/home/shicg/tinyqq/LogServer/auxiliary_process/download/include  -g -g   -o CMakeFiles/LogServer.dir/run.cpp.o -c /home/shicg/tinyqq/LogServer/src/run.cpp",
+  "file": "/home/shicg/tinyqq/LogServer/src/run.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/LogServer/build/auxiliary_process/download/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/LogServer/include -I/home/shicg/tinyqq/LogServer/auxiliary_process/download/include  -g -g   -o CMakeFiles/LogSend.dir/LogSend.cpp.o -c /home/shicg/tinyqq/LogServer/auxiliary_process/download/src/LogSend.cpp",
+  "file": "/home/shicg/tinyqq/LogServer/auxiliary_process/download/src/LogSend.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/LogServer/build/auxiliary_process/download/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/LogServer/include -I/home/shicg/tinyqq/LogServer/auxiliary_process/download/include  -g -g   -o CMakeFiles/LogSend.dir/LogSend.pb.cc.o -c /home/shicg/tinyqq/LogServer/auxiliary_process/download/src/LogSend.pb.cc",
+  "file": "/home/shicg/tinyqq/LogServer/auxiliary_process/download/src/LogSend.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/LogServer/build/auxiliary_process/download/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/LogServer/include -I/home/shicg/tinyqq/LogServer/auxiliary_process/download/include  -g -g   -o CMakeFiles/LogSend.dir/run.cpp.o -c /home/shicg/tinyqq/LogServer/auxiliary_process/download/src/run.cpp",
+  "file": "/home/shicg/tinyqq/LogServer/auxiliary_process/download/src/run.cpp"
+}
+]

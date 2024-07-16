@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/shicg/tinyqq/ChatService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/ChatService/include  -g -g   -o CMakeFiles/ChatService.dir/LogServer.pb.cc.o -c /home/shicg/tinyqq/ChatService/src/LogServer.pb.cc",
+  "file": "/home/shicg/tinyqq/ChatService/src/LogServer.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/ChatService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/ChatService/include  -g -g   -o CMakeFiles/ChatService.dir/Redis.cpp.o -c /home/shicg/tinyqq/ChatService/src/Redis.cpp",
+  "file": "/home/shicg/tinyqq/ChatService/src/Redis.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/ChatService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/ChatService/include  -g -g   -o CMakeFiles/ChatService.dir/run.cpp.o -c /home/shicg/tinyqq/ChatService/src/run.cpp",
+  "file": "/home/shicg/tinyqq/ChatService/src/run.cpp"
+}
+]

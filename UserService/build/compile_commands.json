@@ -1,0 +1,67 @@
+[
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserService.dir/LogServer.pb.cc.o -c /home/shicg/tinyqq/UserService/src/LogServer.pb.cc",
+  "file": "/home/shicg/tinyqq/UserService/src/LogServer.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserService.dir/UserServer.pb.cc.o -c /home/shicg/tinyqq/UserService/src/UserServer.pb.cc",
+  "file": "/home/shicg/tinyqq/UserService/src/UserServer.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserService.dir/UserService.cpp.o -c /home/shicg/tinyqq/UserService/src/UserService.cpp",
+  "file": "/home/shicg/tinyqq/UserService/src/UserService.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserService.dir/UserService.pb.cc.o -c /home/shicg/tinyqq/UserService/src/UserService.pb.cc",
+  "file": "/home/shicg/tinyqq/UserService/src/UserService.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserService.dir/ZooKeeperMatser.cpp.o -c /home/shicg/tinyqq/UserService/src/ZooKeeperMatser.cpp",
+  "file": "/home/shicg/tinyqq/UserService/src/ZooKeeperMatser.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserService.dir/run.cpp.o -c /home/shicg/tinyqq/UserService/src/run.cpp",
+  "file": "/home/shicg/tinyqq/UserService/src/run.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/auxiliary_process/UserService_Sub/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserServer.dir/LogServer.pb.cc.o -c /home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/LogServer.pb.cc",
+  "file": "/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/LogServer.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/auxiliary_process/UserService_Sub/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserServer.dir/UserServer.cpp.o -c /home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/UserServer.cpp",
+  "file": "/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/UserServer.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/auxiliary_process/UserService_Sub/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserServer.dir/UserServer.pb.cc.o -c /home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/UserServer.pb.cc",
+  "file": "/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/UserServer.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/auxiliary_process/UserService_Sub/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserServer.dir/ZooKeeperFow.cpp.o -c /home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/ZooKeeperFow.cpp",
+  "file": "/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/ZooKeeperFow.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/auxiliary_process/UserService_Sub/src",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/UserServer.dir/run.cpp.o -c /home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/run.cpp",
+  "file": "/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/src/run.cpp"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/example",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/callee.dir/UserService.pb.cc.o -c /home/shicg/tinyqq/UserService/example/UserService.pb.cc",
+  "file": "/home/shicg/tinyqq/UserService/example/UserService.pb.cc"
+},
+{
+  "directory": "/home/shicg/tinyqq/UserService/build/example",
+  "command": "/usr/bin/g++-7   -I/home/shicg/tinyqq/UserService/include -I/home/shicg/tinyqq/UserService/auxiliary_process/UserService_Sub/include  -g -g   -o CMakeFiles/callee.dir/main.cpp.o -c /home/shicg/tinyqq/UserService/example/main.cpp",
+  "file": "/home/shicg/tinyqq/UserService/example/main.cpp"
+}
+]
