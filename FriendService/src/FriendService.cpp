@@ -13,6 +13,12 @@ void FriendService::GetFriendList(::google::protobuf::RpcController *controller,
                                   ::ik_FriendService::FriendListResponse *response,
                                   ::google::protobuf::Closure *done)
 {
+    // GetFriendList 流程如下：
+    // 1. 反序列化 request并获取最新的可用服务器列表
+    // 2. 调用 master 获得可用连接
+    // 3. tcp连接发送调用请求。
+    // 4. 获取返回信息
+
     //刷新zookeeper列表
     master_.get_follow();
     //反序列化
@@ -71,6 +77,34 @@ void FriendService::GetUserInfo(::google::protobuf::RpcController *controller,
                                 ::ik_FriendService::UserInfoReponse *response,
                                 ::google::protobuf::Closure *done)
 {
+    // GetUserInfo 流程如下：
+    // 1. 获取任务信息（反序列化）
+    // 2. 向 zookeeper 获取一个可用的连接
+    // 3. 发送任务信息
+    // 4. 接收返回信息
+    // 5. 关闭连接
+    // 6. 反序列化返回信息
+    // 7. 打印返回信息
+    // 8. 回调 done()
+
+    // GetUserInfo 流程结束
+
+    // 反序列化
+    ik_FriendServer::Request ser_request;
+    ser_request.set_type("GetUserInfo");
+    ser_request.set_request(request->SerializeAsString());
+
+    // 获得一个可用的连接
+    int client_fd;
+    while ((client_fd = master_.get_service()) == -1)
+    {
+        master_.get_follow();
+        sleep(1);
+    }
+
+    // 发送任务信息
+    string send_str = ser_request.SerializeAsString();
+    if (send(
     //刷新zookeeper列表
     master_.get_follow();
     //反序列化
@@ -129,6 +163,11 @@ void FriendService::AddFriend(::google::protobuf::RpcController *controller,
                               ::google::protobuf::Empty *response,
                               ::google::protobuf::Closure *done)
 {
+    // AddFriend 流程如下：
+    // 1. 获得最新的zookeeper下的节点列表
+    // 2. 找到一个可用的连接
+    // 3. 反序列化并发送任务信息给 server 服务器
+    // 4. 关闭连接，并返回结果
     //刷新zookeeper列表
     master_.get_follow();
     //反序列化
@@ -170,6 +209,11 @@ void FriendService::DeleteFriend(::google::protobuf::RpcController *controller,
                                  ::google::protobuf::Empty *response,
                                  ::google::protobuf::Closure *done)
 {
+    // DeleteFriend 流程如下：
+    // 1. 获得最新的zookeeper下的节点列表
+    // 2. 找到一个可用的连接
+    // 3. 反序列化并发送任务信息给 server 服务器
+    // 4. 关闭连接，并返回结果
     //刷新zookeeper列表
     master_.get_follow();
     //反序列化

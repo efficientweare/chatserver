@@ -82,7 +82,6 @@ bool ZKMatser::create_master(string master_name)
 //每秒更新服务列表
 void ZKMatser::get_follow()
 {
-
     if (zkhandle_ == nullptr)
         cout << "zkhand is null" << endl;
     String_vector followers;
@@ -126,23 +125,27 @@ string ZKMatser::get_znode_data(string path)
 //得到一个可用服务节点，并与之创建一个文件描述符,返回文件描述符
 int ZKMatser::get_service()
 {
+    // 如果没有服务节点，返回错误码
     if (total_services_ == 0)
         return -1;
 
     string host_data;
     {
         unique_lock<mutex> lock(mutex_);
-        //获取当前应该服务的节点
+        //获取当前应该服务的节点 map<string, string> followers_
         auto it = followers_.begin();
         for (int i = 0; i < current_service_; i++)
         {
             it++;
         }
+        // 更新为总服务数，不包括+1
+        // 是否应该为：current_service_ = (current_service_ + 1) % total_services_;
         current_service_ = (current_service_ + 1) % (total_services_ + 1);
 
         host_data = it->second;
     }
 
+    // 找到IP和端口的分隔符
     int host_index = host_data.find(":");
     if (host_index == -1)
     {
@@ -158,12 +161,14 @@ int ZKMatser::get_service()
     {
         close(client_fd);
         return -1;
-    }
+    } 
+    // 设置服务器地址
     struct sockaddr_in server_addr;
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     server_addr.sin_addr.s_addr = inet_addr(ip.c_str());
 
+    // 连接服务器
     if (connect(client_fd, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
     {
         close(client_fd);

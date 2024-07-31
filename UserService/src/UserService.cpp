@@ -14,8 +14,14 @@ void UserService::Login(::google::protobuf::RpcController *controller,
                         const ::ik_UserService::LoginRequest *request,
                         ::ik_UserService::LoginReponse *response,
                         ::google::protobuf::Closure *done)
-{
-    master_.get_follow();
+{ 
+    // Login 函数详解：
+    // 1. get follow 获得了该服务的所有可用服务器列表，这些服务器都支持login方法
+    // 2. 循环遍历所有可用的服务器，基于轮询的方式分发login请求（while寻找可用服务）
+    // 3. 接收到 login 响应后，返回到主线程
+    // 4. 由于login和register都是同一个服务类型，于是login和register在同一个znode节点上。
+
+    master_.get_follow(); // 更新服务列表
     ik_UserServer::Request login_request;
     login_request.set_type("Login");
     login_request.set_request(request->SerializeAsString());
@@ -48,6 +54,12 @@ void UserService::Registe(::google::protobuf::RpcController *controller,
                           ::ik_UserService::RegisterResponse *response,
                           ::google::protobuf::Closure *done)
 {
+    // Registe 函数详解：
+    // 1. get follow 获得了该服务的所有可用服务器列表，这些服务器都支持register方法
+    // 2. 循环遍历所有可用的服务器，基于轮询的方式分发register请求（while找可用服务）
+    // 3. 接收到 register 响应后，返回到主线程
+    // 4. 由于login和register都是同一个服务类型，于是login和register在同一个znode节点上。
+
     master_.get_follow();
     ik_UserServer::Request register_request;
     register_request.set_type("Register");
@@ -63,7 +75,8 @@ void UserService::Registe(::google::protobuf::RpcController *controller,
         sleep(1);
     }
 
-    //发送信息
+    //发送信息 
+    // call userserver.cpp -> msg_handler
     send(client_fd, send_str.c_str(), send_str.size(), 0);
 
     //获取信息
@@ -83,6 +96,12 @@ void UserService::LoginOut(::google::protobuf::RpcController *controller,
                            ::google::protobuf::Empty *response,
                            ::google::protobuf::Closure *done)
 {
+    // LoginOut 函数详解：
+    // 1. get follow 获得了该服务的所有可用服务器列表，这些服务器都支持loginout方法
+    // 2. 循环遍历所有可用的服务器，基于轮询的方式分发loginout请求（while找可用服务）
+    // 3. 接收到 loginout 响应后，返回到主线程
+    // 4. 由于loginout和register都是同一个服务类型，于是loginout和register在同一个znode节点上。
+
     master_.get_follow();
     ik_UserServer::Request loginout_request;
     loginout_request.set_type("LoginOut");

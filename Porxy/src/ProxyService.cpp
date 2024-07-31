@@ -1,7 +1,14 @@
 #include "ProxyService.hpp"
 
 using namespace placeholders;
-
+// rpc框架流程：
+// 通过stub调用框架内
+// 调用myrpcchannel重写的channel的callmethod，将请求打包序列化，
+// 查询zookeeper相关条目，获得方法的ip和 端口号，建立tcp连接发送给方法提供方
+// 方法提供方通过onmessage获取到rpc请求，反序列化并解析相关消息头，通过参数
+// 调用service的callmethod，服务注册方继承了service，并重写了 xxx 函数，
+// 调用xxx函数，并发送回复给rpcprovider ，provider序列化respond，并
+// 发送给rpc的调用方。
 ProxyService::ProxyService() : master_("/ChatService"),
                                log_stub_(new RpcChannel),
                                friend_stub_(new RpcChannel),
@@ -29,21 +36,30 @@ ProxyService::ProxyService() : master_("/ChatService"),
 //登录
 void ProxyService::login(const muduo::net::TcpConnectionPtr &conn, string &recv_buf, muduo::Timestamp time)
 {
+    // login 流程如下：
+    // 1. 接收并反序列化LoginRequest
+    // 2. 执行Login方法（rpc框架提供），并反序列化LoginReponse
+    // 3. 在 redis 上记录此用户 如：10086：“127.0.0.1:3001” （redis用于存储某一用户的ip和端口号）
+    // 4. proxy维护了一张上线表，用于保存用户id对应的proxy和客户端的连接。
+    // 5. 将结果返回给客户端。
+
     //反序列化
     ik_UserService::LoginRequest login_request;
     login_request.ParseFromString(recv_buf);
 
-    //执行
-    ik_UserService::LoginReponse response;
+
+    ik_UserService::LoginReponse response;    
+    // 执行
+    // call userservice.cpp  // 假设userservice.cpp 实现了Login方法
     user_stub_.Login(nullptr, &login_request, &response, nullptr);
 
-    //在redis上记录此用户
+    //在 redis 上记录此用户 如：10086：“127.0.0.1:3001”
     RpcConfigure configure = RpcApplication::get_instance().get_configure();
     string ip = configure.find_load("server_ip");
     int port = atoi(configure.find_load("server_port").c_str());
     redis_client_.set_host(login_request.id(), ip + ":" + to_string(port));
 
-    //添加此用户到user map表中
+    //添加此用户<id,conn>到user map表中(上线表)
     {
         lock_guard<mutex> lock(mutex_);
         use_connection_map_.insert({login_request.id(), conn});
@@ -57,22 +73,32 @@ void ProxyService::login(const muduo::net::TcpConnectionPtr &conn, string &recv_
 //注册
 void ProxyService::regist(const muduo::net::TcpConnectionPtr &conn, string &recv_buf, muduo::Timestamp time)
 {
+    // regist 的流程如下：
+    // 1. 接收并反序列化RegisterRequest
+    // 2. 执行Register方法（rpc框架提供），并反序列化RegisterReponse
+    // 3. 序列化回复给客户端。
+
     //反序列化
     ik_UserService::RegisterRequest regist_request;
     regist_request.ParseFromString(recv_buf);
 
     //执行
     ik_UserService::RegisterResponse response;
+    // call userservice.cpp 
     user_stub_.Registe(nullptr, &regist_request, &response, nullptr);
 
-    //序列化并发送
+    //序列化回复消息
     string send_str = response.SerializeAsString();
+    // 发送回客户端
     conn->send(send_str);
 }
 
 //注销业务
 void ProxyService::loginout(const muduo::net::TcpConnectionPtr &conn, string &recv_buf, muduo::Timestamp time)
 {
+    // loginout 的流程如下：
+    // 1. 接收并反序列化LoginOutRequest
+    // 2. 执行LoginOut方法（rpc框架提供）
     //反序列化
     ik_UserService::LoginOutRequest request;
     request.ParseFromString(recv_buf);
@@ -84,6 +110,19 @@ void ProxyService::loginout(const muduo::net::TcpConnectionPtr &conn, string &re
 //添加好友业务
 void ProxyService::add_friend(const muduo::net::TcpConnectionPtr &conn, string &recv_buf, muduo::Timestamp time)
 {
+    // add_friend 的流程如下：
+    // 1. 接收并反序列化AddFriendRequest
+    // 2. 执行AddFriend方法（rpc）：使用rpc框架，通过stub调用框架内的
+    // 调用myrpcchannel重写的channel的callmethod，将请求打包序列化，
+    // 查询zookeeper相关条目，获得方法的ip和 端口号，建立tcp连接发送给方法提供方
+    // 方法提供方通过onmessage获取到rpc请求，反序列化并解析相关消息头，通过参数
+    // 调用service的callmethod，服务注册方继承了service，并重写了addfriend函数，
+    // 调用add_friend函数，并发送回复给rpcprovider ，provider序列化respond，并
+    // 发送给rpc的调用方。
+    // 3. 判断执行结果（controller的failed的方法在框架内部）
+    // 4. 若执行成功，则不返回
+    // 5. 若执行失败，则返回错误消息
+
     //反序列化
     ik_FriendService::AddFriendRequest request;
     request.ParseFromString(recv_buf);
@@ -91,6 +130,7 @@ void ProxyService::add_friend(const muduo::net::TcpConnectionPtr &conn, string &
     //执行
     RpcControl controller;
     google::protobuf::Empty em;
+    // 调用 firend_service.cpp 的AddFriend方法。
     friend_stub_.AddFriend(&controller, &request, &em, nullptr);
 
     //判断执行结果
@@ -103,6 +143,19 @@ void ProxyService::add_friend(const muduo::net::TcpConnectionPtr &conn, string &
 //删除好友
 void ProxyService::delete_friend(const muduo::net::TcpConnectionPtr &conn, string &recv_buf, muduo::Timestamp time)
 {
+    // delete_friend 的流程如下：
+    // 1. 接收并反序列化DeleteFriendRequest
+    // 2. 执行DeleteFriend方法（rpc）：使用rpc框架，通过stub调用框架内的
+    // 3. 调用myrpcchannel重写的channel的callmethod，将请求打包序列化，
+    // 查询zookeeper相关条目，获得方法的ip和 端口号，建立tcp连接发送给方法提供方
+    // 方法提供方通过onmessage获取到rpc请求，反序列化并解析相关消息头，通过参数
+    // 调用service的callmethod，服务注册方继承了service，并重写了deletefriend函数，
+    // 调用delete_friend函数，并发送回复给rpcprovider ，provider序列化respond，并
+    // 发送给rpc的调用方。
+    // 4. 判断执行结果（controller的failed的方法在框架内部）
+    // 5. 若执行成功，则不返回
+    // 6. 若执行
+    
     //反序列化
     ik_FriendService::DeleteFriendRequest request;
     request.ParseFromString(recv_buf);

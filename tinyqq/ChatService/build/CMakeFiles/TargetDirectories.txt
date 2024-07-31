@@ -1,0 +1,5 @@
+/home/shicg/tinyqq/ChatService/build/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/ChatService/build/CMakeFiles/edit_cache.dir
+/home/shicg/tinyqq/ChatService/build/src/CMakeFiles/rebuild_cache.dir
+/home/shicg/tinyqq/ChatService/build/src/CMakeFiles/ChatService.dir
+/home/shicg/tinyqq/ChatService/build/src/CMakeFiles/edit_cache.dir

@@ -6,6 +6,8 @@ using namespace placeholders;
 
 UserServer::UserServer(string ip, int port) : stub_(new RpcChannel())
 {
+    // userserver构造函数流程：
+    // 1. 绑定ip和端口号，并获得连接池的实例
     ip_ = ip;
     port_ = port;
     pool_ = Connect_pool::get_instance();
@@ -20,6 +22,10 @@ UserServer::UserServer(string ip, int port) : stub_(new RpcChannel())
 
 void UserServer::run()
 {
+    // Userserver run函数流程：
+    // 1. 初始化网络层，设置相应的回调（连接回调和消息回调）
+    // 2. 注册zookeeper节点，并创建节点，指定server的node路径，将ip和端口注册到相应的路径下
+    // 3. 开启事件循环，开始处理网络事件
     //初始化网络层
     muduo::net::InetAddress address(ip_.c_str(), port_);
     muduo::net::TcpServer server(&loop_, address, "UserServer");
@@ -70,6 +76,11 @@ void UserServer::msg_callback(const muduo::net::TcpConnectionPtr &conn, muduo::n
     //登录业务
     if (request.type() == "Login")
     {
+        // 服务器接收到Login 请求，流程如下：
+        // 1. 获取到具体的id和password
+        // 2. 执行Login方法：通过mysql pool发送给mysql查询操作，如果查询用户存在则更新用户状态。
+        // 3. 反序列化结果 并将结果返回
+
         // 反序列化数据得到 id、password
         ik_UserServer::LoginRequest login_request;
         login_request.ParseFromString(request.request());
@@ -94,13 +105,18 @@ void UserServer::msg_callback(const muduo::net::TcpConnectionPtr &conn, muduo::n
     }
     else if (request.type() == "Register")  //注册业务
     {
+        // 服务器接收到Register 请求，流程如下：
+        // 1. 获取到具体的name和password
+        // 2. 执行Register方法：通过mysql pool发送给mysql插入操作，如果插入失败则返回-1，如果插入成功返回新用户的id。
+        // 3. 反序列化结果 并将结果返回
+
         ik_UserServer::RegisterRequest register_request;
         register_request.ParseFromString(request.request());
         string name = register_request.name();
         string password = register_request.password();
         //cout<<name<<" "<<password<<endl;
         ik_UserServer::RegisterResponse register_response;
-        int id = Register(name, password);
+        int id = Register(name, password);  // register the user
         if (id < 0)
         {
             register_response.set_is_success(false);
@@ -115,6 +131,13 @@ void UserServer::msg_callback(const muduo::net::TcpConnectionPtr &conn, muduo::n
     }
     else if (request.type() == "LoginOut")  //注销业务
     {
+        // 服务器接收到LoginOut 请求，流程如下：
+        // 1. 获取到具体的id
+        // 2. 执行LoginOut方法：通过mysql pool发送给mysql更新操作，将用户的is_login状态置为false。
+        // 3. 反序列化结果 并将结果返回
+
+        // 反序列化数据得到 id
+
         ik_UserServer::LoginOutRequest out_request;
         out_request.ParseFromString(request.request());
         int id = out_request.id();
@@ -189,11 +212,12 @@ void UserServer::LoginOut(int id)
 //注册 成功返回注册的账户，失败返回-1
 int UserServer::Register(string name, string password)
 {
-    shared_ptr<Connect> conn = pool_->get_connect();
+    shared_ptr<Connect> conn = pool_->get_connect();  // connect mysql by mysql pool
     char sql[BUFF_SIZE] = {0};
     sprintf(sql, "insert into User(name,password) values('%s','%s')", name.c_str(), password.c_str());
+    // sql sequence description
     //cout << sql << endl;
-    if (false == conn->update(sql))
+    if (false == conn->update(sql))  // mysql update required
     {
         ik::LogRequest request;
         request.set_name("UserServer");
@@ -201,5 +225,5 @@ int UserServer::Register(string name, string password)
         stub_.Log_ERROR(nullptr, &request, nullptr, nullptr);
         return false;
     }
-    return mysql_insert_id(conn->get_connection());
+    return mysql_insert_id(conn->get_connection()); 
 }
